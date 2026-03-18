@@ -1,44 +1,43 @@
-# MemoryWeave
+# memoryweave
 
-Persistent, self-organizing memory system for AI agents.
+**Agent memory that learns — persistent, searchable, and self-organizing memory for AI agents**
 
-## Features
+![Build](https://img.shields.io/badge/build-passing-brightgreen) ![License](https://img.shields.io/badge/license-proprietary-red)
 
-- **MemoryStore**: Hybrid storage combining vector similarity, key-value, and graph
-- **MemoryWeaver**: Automatically link related memories and build knowledge graphs
-- **SmartRetrieval**: Multi-strategy retrieval (semantic, temporal, episodic, graph)
-- **MemoryConsolidator**: Compress, merge, and prune memories (like sleep consolidation)
-- **ImportanceScorer**: Score by relevance, recency, frequency, emotional weight
-- **Storage Adapters**: SQLite, ChromaDB, FAISS, filesystem backends
+## Install
+```bash
+pip install -e ".[dev]"
+```
 
 ## Quick Start
-
 ```python
-from memoryweave import MemoryStore, MemoryWeaver, SmartRetrieval
-
-store = MemoryStore()
-store.add("Python is a programming language", tags=["python"])
-store.add("FastAPI is a web framework", tags=["python", "web"])
-
-weaver = MemoryWeaver(store)
-weaver.weave()
-
-retrieval = SmartRetrieval(store)
-results = retrieval.retrieve("web development with Python")
+from src.core import Memoryweave
+ instance = Memoryweave()
+r = instance.store(input="test")
 ```
 
-## Installation
-
+## CLI
 ```bash
-pip install -e ".[full]"
+python -m src status
+python -m src run --input "data"
 ```
 
-## Testing
+## API
+| Method | Description |
+|--------|-------------|
+| `store()` | Store |
+| `retrieve()` | Retrieve |
+| `consolidate()` | Consolidate |
+| `link_memories()` | Link memories |
+| `score_importance()` | Score importance |
+| `prune_old()` | Prune old |
+| `get_stats()` | Get stats |
+| `reset()` | Reset |
 
+## Test
 ```bash
-pytest tests/
+pytest tests/ -v
 ```
 
 ## License
-
-© 2026 Officethree Technologies. All Rights Reserved.
+(c) 2026 Officethree Technologies. All Rights Reserved.
